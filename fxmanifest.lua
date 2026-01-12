@@ -13,11 +13,13 @@ client_scripts {
 }
 
 server_scripts {
-    '**/*_sv.lua'
+    '**/*_sv.lua',
+    '_versioncheck.lua'
 }
 
 shared_scripts {
     '@ox_lib/init.lua',
     'bridge.lua'
 }
+
 
