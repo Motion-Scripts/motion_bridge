@@ -24,3 +24,37 @@ Bridge.FRAMEWORK = function()
         return nil
     end
 end
+
+Bridge.AMBULANCE = function()
+    if GetResourceState('qbx_medical') == 'started' then
+        return 'qbx'
+    elseif GetResourceState('qb-ambulancejob') == 'started' then
+        return 'qb'
+    elseif GetResourceState('es_extended') == 'started' then
+        return 'esx'
+    elseif GetResourceState('wasabi_ambulance') == 'started' then
+        return 'wasabi'
+    elseif GetResourceState('ars_ambulancejob') == 'started' then
+        return 'ars'
+    elseif GetResourceState('brutal_ambulancejob') == 'started' then
+        return 'brutal'
+    elseif GetResourceState('p_ambulancejob') == 'started' then
+        return 'pScripts'
+    else
+        print("[Motion-Bridge] No ambulance script detected")
+        return nil
+    end
+end
+
+Bridge.INVENTORY = function()
+    if GetResourceState('ox_inventory') == 'started' then
+        return 'ox'
+    elseif GetResourceState('qb-inventory') == 'started' then
+        return 'qb'
+    elseif GetResourceState('codem-inventory') == 'started' then
+        return 'codem'
+    else
+        print("[Motion-Bridge] No inventory script detected")
+        return nil
+    end
+end
