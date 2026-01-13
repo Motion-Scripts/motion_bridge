@@ -1,14 +1,14 @@
 Bridge = {}
 
 local coreObject = nil
-function GetFrameWorkObject()
+local function GetFrameWorkObject()
     if not coreObject then
         if Bridge.FRAMEWORK == 'qbx' then coreObject = exports['qb-core']:GetCoreObject() end
         if Bridge.FRAMEWORK == 'qb' then coreObject = exports['qb-core']:GetCoreObject() end
         if Bridge.FRAMEWORK == 'esx' then coreObject = exports["es_extended"]:getSharedObject() end
       end
     
-      return coreObject
+    return coreObject
 end
 
 

@@ -5,7 +5,7 @@ else
     print("[Motion-Bridge] Ambulance Script Detected: " .. script)
 end
 
-function revive(id)
+local function revive(id)
     if script == 'qb' then
         TriggerClientEvent('hospital:client:Revive', id)
     elseif script == 'qbx' then
