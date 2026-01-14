@@ -4,7 +4,7 @@ game 'gta5'
 name 'motion_bridge'
 description 'Motion Bridge - A bridge for scripts made by Motion Scripts'
 author 'Motion Scripts'
-version '1.0.1'
+version '1.0.2'
 
 lua54 'yes'
 
@@ -21,6 +21,7 @@ shared_scripts {
     '@ox_lib/init.lua',
     'shared.lua'
 }
+
 
 
 
