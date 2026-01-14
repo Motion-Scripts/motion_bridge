@@ -1,3 +1,12 @@
+if GetCurrentResourceName() ~= 'motion_bridge' then
+    CreateThread(function()
+        Error("Please ensure that the resource name is motion_bridge, changing the resource name will break the script!")
+        Wait(1000 * 30)
+    end)
+else
+    Success("Initialized ^1" .. GetCurrentResourceName() .." ^7by ^1Motion Scripts")
+end
+
 exports('GetPlayerData', function(playerId)
     local framework = Bridge.FRAMEWORK()
     if framework == 'qbx' then
