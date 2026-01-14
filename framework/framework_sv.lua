@@ -11,8 +11,6 @@ CreateThread(function()
     end
 end)
 
-
-
 exports('HasJob', function(playerId, jobName)
     if not playerId or not jobName then return false end
 
