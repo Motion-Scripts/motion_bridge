@@ -1,3 +1,13 @@
+if GetCurrentResourceName() ~= 'motion_redzones' then
+    CreateThread(function()
+        print("^1ERROR:^7 Please ensure that the resource name is motion_redzones, changing the resource name will break the script!")
+        Wait(1000) 
+        StopResource(GetCurrentResourceName())
+    end)
+else
+    print("^2Initialized ^1" .. GetCurrentResourceName() .. " ^7by ^1Motion Scripts")
+end
+
 exports('HasJob', function(playerId, jobName)
     if not playerId or not jobName then return false end
 
