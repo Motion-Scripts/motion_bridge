@@ -1,12 +1,14 @@
-if GetCurrentResourceName() ~= 'motion_redzones' then
-    CreateThread(function()
-        print("^1ERROR:^7 Please ensure that the resource name is motion_redzones, changing the resource name will break the script!")
-        Wait(1000) 
-        StopResource(GetCurrentResourceName())
-    end)
-else
-    print("^2Initialized ^1" .. GetCurrentResourceName() .. " ^7by ^1Motion Scripts")
-end
+AddEventHandler('onResourceStart', function(resource)
+    if resource ~= GetCurrentResourceName() then return end
+
+    if resource ~= 'motion_bridge' then
+        print("^1ERROR:^7 Resource name must be ^1motion_bridge^7!")
+        StopResource(resource)
+    else
+        print("^2Initialized ^1" .. resource .. " ^7by ^1Motion Scripts")
+    end
+end)
+
 
 exports('HasJob', function(playerId, jobName)
     if not playerId or not jobName then return false end
