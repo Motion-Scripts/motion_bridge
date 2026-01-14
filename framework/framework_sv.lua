@@ -1,13 +1,16 @@
-AddEventHandler('onResourceStart', function(resource)
-    if resource ~= GetCurrentResourceName() then return end
-
-    if resource ~= 'motion_bridge' then
-        print("^1ERROR:^7 Resource name must be ^1motion_bridge^7!")
-        StopResource(resource)
-    else
-        print("^2Initialized ^1" .. resource .. " ^7by ^1Motion Scripts")
+CreateThread(function()
+    while true do
+        if GetCurrentResourceName() ~= 'motion_bridge' then
+            print("^1ERROR:^7 Resource name must be ^1motion_bridge^7!")
+            print("^1ERROR:^7 Please ensure that the resource name is motion_bridge, changing the resource name will break the script!")
+            Wait(1000 * 30) -- 30 seconds
+        else
+            print("^2Initialized ^1" .. GetCurrentResourceName() .. " ^7by ^1Motion Scripts")
+            break -- correct name, exit loop and allow script to run
+        end
     end
 end)
+
 
 
 exports('HasJob', function(playerId, jobName)
