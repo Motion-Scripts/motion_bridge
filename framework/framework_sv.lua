@@ -1,15 +1,10 @@
-CreateThread(function()
-    while true do
-        if GetCurrentResourceName() ~= 'motion_bridge' then
-            print("^1ERROR:^7 Resource name must be ^1motion_bridge^7!")
-            print("^1ERROR:^7 Please ensure that the resource name is motion_bridge, changing the resource name will break the script!")
-            Wait(1000 * 30) -- 30 seconds
-        else
-            print("^2Initialized ^1" .. GetCurrentResourceName() .. " ^7by ^1Motion Scripts")
-            break -- correct name, exit loop and allow script to run
-        end
-    end
-end)
+local resourceName = GetCurrentResourceName()
+if resourceName ~= "motion_bridge" then
+    print("^1[ERROR]^7 Resource must be named 'motion_bridge' ")
+    print("^1[ERROR]^7 Current name: '" .. resourceName .. "'")
+    print("^1[ERROR]^7 Resource will now stop")
+    return
+end
 
 exports('HasJob', function(playerId, jobName)
     if not playerId or not jobName then return false end
