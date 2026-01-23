@@ -13,7 +13,7 @@ exports('GetPlayerData', function(playerId)
 end)
 
 exports('GetCash', function(playerId)
-    local data = exports['YourResource']:GetPlayerData(playerId)
+    local data = exports.motion_bridge:GetPlayerData(playerId)
     if not data then return 0 end
 
     local framework = Bridge.FRAMEWORK()
@@ -26,7 +26,7 @@ exports('GetCash', function(playerId)
 end)
 
 exports('GetBank', function(playerId)
-    local data = exports['YourResource']:GetPlayerData(playerId)
+    local data = exports.motion_bridge:GetPlayerData(playerId)
     if not data then return 0 end
 
     local framework = Bridge.FRAMEWORK()
@@ -39,7 +39,7 @@ exports('GetBank', function(playerId)
 end)
 
 exports('GetCID', function(playerId)
-    local data = exports['YourResource']:GetPlayerData(playerId)
+    local data = exports.motion_bridge:GetPlayerData(playerId)
     if not data then return nil end
 
     local framework = Bridge.FRAMEWORK()
