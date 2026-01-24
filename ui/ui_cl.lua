@@ -1,5 +1,7 @@
 exports('Notify', function(title, subTitle, type, duration, position)
-    if GetResourceState("ox_lib") == "started" then
+    if GetResourceState("motion_notify") == "started" then
+        exports.motion_notify:Notify(title, subTitle, type, duration)
+    elseif GetResourceState("ox_lib") == "started" then
         lib.notify({
             title = title or "",
             description = subTitle or "",
