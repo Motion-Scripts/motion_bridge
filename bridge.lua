@@ -4,6 +4,7 @@ Bridge.FRAMEWORK = function()
     if GetResourceState("qbx_core") == "started" then return "qbx"
     elseif GetResourceState("qb-core") == "started" then return "qb"
     elseif GetResourceState("es_extended") == "started" then return "esx"
+    elseif GetResourceState("ox_core") == "started" then return "ox"
     else
         print("[Motion-Bridge] No framework detected")
         return nil
@@ -11,9 +12,10 @@ Bridge.FRAMEWORK = function()
 end
 
 Bridge.CORE = function()
-    if Bridge.FRAMEWORK() == 'qbx' then return exports['qb-core']:GetCoreObject() 
-    elseif Bridge.FRAMEWORK() == 'qb' then return exports['qb-core']:GetCoreObject() 
-    elseif Bridge.FRAMEWORK() == 'esx' then return exports["es_extended"]:getSharedObject() 
+    if Bridge.FRAMEWORK() == 'qbx' then return exports['qb-core']:GetCoreObject()
+    elseif Bridge.FRAMEWORK() == 'qb' then return exports['qb-core']:GetCoreObject()
+    elseif Bridge.FRAMEWORK() == 'esx' then return exports["es_extended"]:getSharedObject()
+    elseif Bridge.FRAMEWORK() == 'ox' then return "ox_core"
     else
         print("[Motion-Bridge] No core object detected")
         return nil

@@ -4,7 +4,7 @@ game 'gta5'
 name 'motion_bridge'
 description 'Motion Bridge - A bridge for scripts made by Motion Scripts'
 author 'Motion Scripts'
-version '1.0.3'
+version '1.0.4'
 
 lua54 'yes'
 

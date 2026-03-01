@@ -85,12 +85,60 @@ exports('GetHunger', function(playerId)
     end
 end)
 
-local isLoaded = false 
-local function loaded() 
-    isLoaded = true 
-end 
-RegisterNetEvent("QBCore:Client:OnPlayerLoaded", loaded) 
-RegisterNetEvent("esx:playerLoaded", loaded) 
-exports('IsPlayerLoaded', function() 
-    return isLoaded 
+--[[
+    GetLocalPlayerGroup() -> string (client)
+    HasGroup(groups) -> bool (client, checks local player)
+]]
+exports('GetLocalPlayerGroup', function()
+    local framework = Bridge.FRAMEWORK()
+    if not framework then return "user" end
+
+    if framework == 'esx' then
+        local ESX = Bridge.CORE()
+        if ESX and ESX.GetPlayerData then
+            local pd = ESX.GetPlayerData()
+            if pd and pd.group then return pd.group end
+        end
+    elseif framework == 'qb' or framework == 'qbx' then
+        local core = Bridge.CORE()
+        if core and core.Functions and core.Functions.GetPlayerData then
+            local pd = core.Functions.GetPlayerData()
+            if pd then
+                return pd.permission or (pd.job and pd.job.grade_name) or "user"
+            end
+        end
+    elseif framework == 'ox' and lib.checkDependency('ox_core', '0.0.0', false) then
+        local ok, Ox = pcall(require, '@ox_core.lib.init')
+        if ok and Ox then
+            local player = Ox.GetPlayer()
+            if player and player.getGroups then
+                local groups = player.getGroups()
+                for _, g in ipairs({"admin", "superadmin", "god", "mod"}) do
+                    if groups and groups[g] then return g end
+                end
+            end
+        end
+    end
+
+    return "user"
+end)
+
+exports('HasGroup', function(groups)
+    if not groups or type(groups) ~= "table" then return false end
+    local grp = exports.motion_bridge:GetLocalPlayerGroup()
+    grp = tostring(grp):lower()
+    for _, g in ipairs(groups) do
+        if tostring(g):lower() == grp then return true end
+    end
+    return false
+end)
+
+local isLoaded = false
+local function loaded()
+    isLoaded = true
+end
+RegisterNetEvent("QBCore:Client:OnPlayerLoaded", loaded)
+RegisterNetEvent("esx:playerLoaded", loaded)
+exports('IsPlayerLoaded', function()
+    return isLoaded
 end)
