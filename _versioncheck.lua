@@ -33,7 +33,7 @@ if not SUPPRESS_UPDATES then
             CreateThread(function()
                 Wait(4000)
                 local currentVersionRaw = GetResourceMetadata("motion_bridge", 'version')
-                PerformHttpRequest('https://raw.githubusercontent.com/Motion-Scripts/motion_bridge_version/refs/heads/main/version.txt', function(err, body, headers)
+                PerformHttpRequest('https://raw.githubusercontent.com/Motion-Scripts/motion_bridge_version/refs/heads/main/bridge.txt', function(err, body, headers)
                     if not body then
                         print("^1Unable to run version check for ^7'^3motion_bridge^7' (^3"..currentVersionRaw.."^7)")
                         return
